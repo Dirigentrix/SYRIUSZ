@@ -1,0 +1,31 @@
+{
+    "cmake.sourceDirectory": "C:/Users/DELL/OneDrive/Desktop/DARTRIX/AGENTS",
+    "merge-conflict.autoNavigateNextConflict.enabled": true,
+    "microsoft-sovereign-cloud.environment": "USGovernment",
+    "vscode-edge-devtools.browserFlavor": "Default",
+    "powershell.helpCompletion": "LineComment",
+    "powershell.sideBar.CommandExplorerVisibility": true,
+    "powershell.suppressAdditionalExeNotFoundWarning": true,
+    "javascript.preferGoToSourceDefinition": true,
+    "javascript.referencesCodeLens.enabled": true,
+    "javascript.referencesCodeLens.showOnAllFunctions": true,
+    "js/ts.implicitProjectConfig.strict": true,
+    "js/ts.implicitProjectConfig.module": "System",
+    "yamlKeySearch.includePatterns": [
+        "**/*.yml",
+        "**/*.yaml",
+        ""
+    ],
+    "yamlKeySearch.excludePatterns": [
+        "**/node_modules/**",
+        "**/.git/**",
+        "**/target/**",
+        "**/build/**",
+        "**/dist/**",
+        "**/out/**",
+        "**/.vscode/**",
+        "",
+        ""
+    ],
+    "cmake.ignoreCMakeListsMissing": true
+}

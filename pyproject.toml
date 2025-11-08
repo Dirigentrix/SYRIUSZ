@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dartrix"
+version = "0.1.0-alpha"
+description = "Conscious Value Stream Mapping for E-commerce & Coaching"
+authors = [{name = "Daniel Adrian Ratajczyk"}]
+license = {text = "MIT"}
+requires-python = ">=3.8"
+dependencies = [
+    "graphviz",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+dartrix = "dartrix.cli.dartrix_cli:main"

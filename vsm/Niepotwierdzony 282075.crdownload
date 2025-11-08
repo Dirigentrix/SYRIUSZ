@@ -1,0 +1,27 @@
+from .process_step import ProcessStep
+
+class StreamBuilder:
+    """
+    Buduje Value Stream Mapę krok po kroku.
+    """
+    def __init__(self):
+        self.steps = {}
+        self.start_step = None
+
+    def add_step(self, name: str, step_type: str, time: float, value_added: bool, is_start=False):
+        step = ProcessStep(name, step_type, time, value_added)
+        self.steps[name] = step
+        if is_start:
+            self.start_step = step
+        return self
+
+    def connect(self, from_name: str, to_name: str):
+        if from_name not in self.steps or to_name not in self.steps:
+            raise KeyError("Both steps must exist before connecting.")
+        self.steps[from_name].add_next(self.steps[to_name])
+        return self
+
+    def build(self):
+        if not self.start_step:
+            raise RuntimeError("Stream must have a start step.")
+        return self.start_step

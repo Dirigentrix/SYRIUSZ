@@ -1,0 +1,33 @@
+try:
+    import graphviz
+    HAS_GRAPHVIZ = True
+except ImportError:
+    HAS_GRAPHVIZ = False
+
+def visualize_stream(start_step, filename="vsm_map"):
+    """
+    Generuje wizualizację VSM przy użyciu Graphviz (jeśli dostępny).
+    """
+    if not HAS_GRAPHVIZ:
+        print("Graphviz not installed. Skipping visualization.")
+        return None
+
+    dot = graphviz.Digraph(comment='Value Stream Map')
+    visited = set()
+    queue = [start_step]
+
+    while queue:
+        step = queue.pop(0)
+        if id(step) in visited:
+            continue
+        visited.add(id(step))
+
+        color = "lightgreen" if step.value_added else "lightcoral"
+        dot.node(step.name, f"{step.name}\n({step.time} min)", style="filled", fillcolor=color)
+
+        for next_step in step.next_steps:
+            dot.edge(step.name, next_step.name)
+            queue.append(next_step)
+
+    dot.render(filename, format="png", cleanup=True)
+    return f"{filename}.png"
